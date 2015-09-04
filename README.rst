@@ -11,11 +11,12 @@ Installation
 Make sure you already have installed
 
 * `Amazon RDS Command Line Toolkit
-  <http://docs.aws.amazon.com/AmazonRDS/latest/CommandLineReference/StartCLI.html>`_.
+  <http://docs.aws.amazon.com/AmazonRDS/latest/CommandLineReference/StartCLI.html>`_
 * Python 3.4 (Python 2 is not supported)
 
 
 Install from PyPI::
+
     pip install rds-log
 
 
