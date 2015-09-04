@@ -3,3 +3,5 @@ venv
 *.egg-info
 .eggs
 /tmp
+/build
+/dist

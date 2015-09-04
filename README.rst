@@ -43,3 +43,15 @@ Run rds-log-stream with your database identifier and directory to store logs::
 
 /your/log/destination will be populated with all current RDS logs and
 continously updated with new messages as they arrive.
+
+
+Development
+-----------
+
+Creating a new release::
+
+    # Modify setup.py with version
+    git commit -am 'Version x.x.x'
+    git tag x.x.x
+    python setup.py sdist bdist_wheel
+    twine upload dist/*
