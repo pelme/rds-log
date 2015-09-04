@@ -13,8 +13,8 @@ logging.basicConfig(stream=sys.stderr, level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 
-from .rds_cli import RDSLogDownload, RDSLogStream
-from .local_log import LocalLogFile
+from ..rds import RDSLogDownload, RDSLogStream
+from ..local_log import LocalLogFile
 
 
 def _get_log_files(config, db_identifier, root_directory):
