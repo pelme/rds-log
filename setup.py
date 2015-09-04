@@ -17,7 +17,7 @@ def read(fname):
 
 setup(
     name='rds-log',
-    version='1.0.0',
+    version='1.0.1',
     description='A utility to download AWS RDS logs',
     author='Andreas Pelme',
     author_email='andreas@pelme.se',
