@@ -1,5 +1,5 @@
-rds-log-streamer
-================
+rds-log
+=======
 
 A small utility to download/stream logs from Amazon AWS RDS to a local
 directory. When started, all log files will be downloaded, and the latest file
@@ -23,7 +23,7 @@ Install from PyPI::
 Usage
 -----
 
-rds-log-streamer will find AWS credentials in ~/.aws/credentials (just like
+rds-log-stream will find AWS credentials in ~/.aws/credentials (just like
 boto).
 
 Set up ~/.aws/credentials with AWS authentication details::
