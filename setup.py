@@ -3,7 +3,7 @@
 
 import os
 import codecs
-from setuptools import setup
+from setuptools import setup, find_packages
 
 
 # Utility function to read the README file.
@@ -17,12 +17,12 @@ def read(fname):
 
 setup(
     name='rds-log',
-    version='1.0.1',
+    version='1.0.2',
     description='A utility to download AWS RDS logs',
     author='Andreas Pelme',
     author_email='andreas@pelme.se',
     url='https://github.com/pelme/rds-log',
-    packages=['_rds_log'],
+    packages=find_packages(),
     long_description=read('README.rst'),
     install_requires=[
         'boto3==1.1.2',
