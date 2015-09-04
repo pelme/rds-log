@@ -25,6 +25,7 @@ class RDSLogDownload:
 
     def download(self):
         cmd = [
+            'rds',
             'rds-download-db-logfile',
             self._config.db_identifier,
             '--log-file-name',
@@ -54,6 +55,7 @@ class RDSLogStream:
 
     def start_stream(self):
         cmd = [
+            'rds',
             'rds-watch-db-logfile',
             self._config.db_identifier,
             '--log-file-name',
