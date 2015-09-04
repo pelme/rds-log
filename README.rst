@@ -54,4 +54,4 @@ Creating a new release::
     git commit -am 'Version x.x.x'
     git tag x.x.x
     python setup.py sdist bdist_wheel
-    twine upload dist/*
+    twine upload dist/*x.x.x*
