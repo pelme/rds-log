@@ -23,8 +23,9 @@ Install from PyPI::
 Usage
 -----
 
-rds-log-stream will find AWS credentials in ~/.aws/credentials (just like
-boto).
+rds-log-stream will find AWS credentials in ~/.aws/credentials or environment
+variables. rds-log-stream uses boto3 and finds credentials/config in the same
+locations.
 
 Set up ~/.aws/credentials with AWS authentication details::
 
@@ -36,6 +37,13 @@ Set up ~/.aws/config to point to your region::
 
     [default]
     region = eu-central-1
+
+An alternative is to set up environment variables::
+
+    export AWS_ACCESS_KEY_ID="<your access key id>"
+    export AWS_SECRET_ACCESS_KEY="<your secret key>"
+    export AWS_DEFAULT_REGION="<your aws region>"
+
 
 Run rds-log-stream with your database identifier and directory to store logs::
 
