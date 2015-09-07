@@ -23,6 +23,9 @@ def _get_log_files(config, db_identifier, root_directory):
     rds_logs = sorted((rds_log for rds_log in result['DescribeDBLogFiles']),
                       key=operator.itemgetter('LogFileName'))
 
+    if not rds_logs:
+        logger.info('No RDS logs was retrieved: {}'.format(rds_logs))
+
     def downloads():
         for rds_log in rds_logs[:-1]:
             local_file = LocalLogFile(root_directory, rds_log['LogFileName'])
@@ -30,7 +33,12 @@ def _get_log_files(config, db_identifier, root_directory):
             if local_file.size != rds_log['Size']:
                 yield RDSLogDownload(config, local_file)
 
-    return (list(downloads()), RDSLogStream(config, LocalLogFile(root_directory, rds_logs[-1]['LogFileName'])))
+    if rds_logs:
+        stream = RDSLogStream(config, LocalLogFile(root_directory, rds_logs[-1]['LogFileName']))
+    else:
+        stream = None
+
+    return (list(downloads()), stream)
 
 
 _Config = namedtuple('Config', ['access_key', 'secret_key', 'region', 'db_identifier', 'rds_client'])
@@ -57,10 +65,10 @@ def main(db_identifier, destination_directory):
 
         while True:
             downloads, stream = _get_log_files(config, db_identifier, destination_directory)
-            new_stream = stream != current_stream
+            stream_changed = stream != current_stream
 
-            if new_stream:
-                if current_stream:
+            if stream_changed:
+                if current_stream is not None:
                     current_stream.stop_stream()
 
                 for download in downloads:
@@ -68,7 +76,9 @@ def main(db_identifier, destination_directory):
                     download.download()
 
                 current_stream = stream
-                current_stream.start_stream()
+
+                if current_stream is not None:
+                    current_stream.start_stream()
 
             else:
                 logger.info('Check completed, no new file found')
