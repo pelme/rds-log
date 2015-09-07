@@ -4,7 +4,6 @@ import pathlib
 import time
 import operator
 import logging
-import setuptools_scm
 
 from collections import namedtuple
 
@@ -50,7 +49,6 @@ _Config = namedtuple('Config', ['access_key', 'secret_key', 'region', 'db_identi
 @click.argument('db_identifier')
 @click.argument('destination_directory', type=click.Path(file_okay=False, dir_okay=True, exists=True))
 def main(db_identifier, destination_directory):
-    logger.info('Starting rds-log-stream {}'.format(setuptools_scm.get_version()))
     destination_directory = pathlib.Path(destination_directory)
     current_stream = None
 
