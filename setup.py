@@ -17,7 +17,7 @@ def read(fname):
 
 setup(
     name='rds-log',
-    version='1.0.2',
+    use_scm_version=True,
     description='A utility to download AWS RDS logs',
     author='Andreas Pelme',
     author_email='andreas@pelme.se',
@@ -27,6 +27,9 @@ setup(
     install_requires=[
         'boto3==1.1.2',
         'click==5.1',
+    ],
+    setup_requires=[
+        'setuptools_scm==1.7.0',
     ],
     classifiers=[
         'Development Status :: 5 - Production/Stable',
