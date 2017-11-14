@@ -33,6 +33,7 @@ setup(
     classifiers=[
         'Development Status :: 5 - Production/Stable',
         'Programming Language :: Python :: 3.4',
+        'Programming Language :: Python :: 3.6',
     ],
     entry_points={
         'console_scripts': 'rds-log-stream=_rds_log.commands.rds_log_stream:main'
