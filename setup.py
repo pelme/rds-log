@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-# -*- coding: utf-8 -*-
 
 import os
 import codecs
@@ -25,7 +24,7 @@ setup(
     packages=find_packages(),
     long_description=read('README.rst'),
     install_requires=[
-        'boto3==1.1.2',
+        'boto3==1.4.7',
         'click==5.1',
     ],
     setup_requires=[
@@ -34,6 +33,7 @@ setup(
     classifiers=[
         'Development Status :: 5 - Production/Stable',
         'Programming Language :: Python :: 3.4',
+        'Programming Language :: Python :: 3.6',
     ],
     entry_points={
         'console_scripts': 'rds-log-stream=_rds_log.commands.rds_log_stream:main'
